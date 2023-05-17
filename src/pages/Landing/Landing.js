@@ -2,10 +2,9 @@ import React, { useEffect } from 'react'
 import styles from "./Landing.css"
 import { useState } from 'react';
 import {fetchlatlon,fetchData} from './../../api/api';
+import Swal from 'sweetalert2';
 
 function Landing() {
-
-
 
   async function ftw(position){
     document.getElementById("latitude").value=position.coords.latitude;
@@ -68,10 +67,35 @@ function Landing() {
 
     if(document.getElementById("latitude").value=="" && document.getElementById("longitude").value==""){
       if( document.getElementById("location").value==""){
-        window.alert("Enter valid data");
+        await Swal.fire(
+          'Oops!!',
+          'Enter valid data',
+          'error'
+        )
         return;
       }
       await fetchlatlon();
+    }else{
+      var lat=document.getElementById("latitude").value;
+      var lon=document.getElementById("longitude").value;
+      if(lat<-90 || lat>90 || lat==""){
+        await Swal.fire(
+          'Oops!!',
+          'Enter valid latitude!',
+          'error'
+        )
+        return;
+      }
+      if( lon<-180 || lon>180 || lon==""){
+        await Swal.fire(
+          'Oops!!',
+          'Enter valid longitude',
+          'error'
+        )
+        return;
+      }
+
+
     }
     wdata=await fetchData();
     update();
