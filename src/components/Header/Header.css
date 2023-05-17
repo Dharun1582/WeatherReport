@@ -10,6 +10,7 @@
     background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
 } */
 .text {
+    font-weight: 900;
     text-transform: uppercase;
     background: linear-gradient(to right, #dfff13 0%, #626708 100%);
     -webkit-background-clip: text;

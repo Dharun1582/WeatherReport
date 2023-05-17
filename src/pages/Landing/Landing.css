@@ -16,6 +16,10 @@
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+.cardown:hover{
+    /* cursor: pointer; */
+    transform: scale(1.01);
+}
 
 .tempown{
     font-size: 40px;
@@ -65,21 +69,38 @@
     -webkit-backdrop-filter: blur( 3.5px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    height:max-content;
+    /* height:max-content; */
+}
+
+.card:hover{
+    transform: scale(1.05);
 }
 
 .forecast{
-    height: 100%;
-    padding: 10px 10px 0px 10px;
+    /* height:fit-content; */
+    /* padding: 10px 10px 0px 10px; */
 }
 
 .card-text{
     text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
 }
 .forcastown{
-    padding: 10px 3px;
-    font-weight: 900;
-    font-size: large;
+    padding: 30px 3px;
+    /* font-weight: 900; */
+    /* font-size: large; */
+    /* text-transform: uppercase; */
+    /* background: linear-gradient(to right, #dfff13 0%, #626708 100%); */
+    background-color: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 35px;
+
+    font-family: 'Poppins', sans-serif;
 }
+
+/* .rowown{
+    overflow: scroll;
+} */
+

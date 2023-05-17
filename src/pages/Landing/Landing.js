@@ -10,8 +10,6 @@ function Landing() {
   async function ftw(position){
     document.getElementById("latitude").value=position.coords.latitude;
     document.getElementById("longitude").value=position.coords.longitude;
-    console.log( document.getElementById("latitude").value);
-    console.log( document.getElementById("longitude").value);
     wdata=await fetchData();
     update();
   }
@@ -46,7 +44,7 @@ function Landing() {
     document.getElementById("visibility").innerHTML=wdata.current.visibility+" m";
     document.getElementById("pressure").innerHTML=wdata.current.pressure+" hPa";
     document.getElementById("dewpoint").innerHTML=wdata.current.dew_point+" °C";
-    for(var i=1;i<=5;i++){
+    for(var i=1;i<=6;i++){
       document.getElementById(i+"img").src=`http://openweathermap.org/img/wn/${wdata.daily[i].weather[0].icon}@4x.png`;
       document.getElementById(i+"max").innerHTML=wdata.daily[i].temp.max+" °C";
       document.getElementById(i+"min").innerHTML=wdata.daily[i].temp.min+" °C";
@@ -54,6 +52,13 @@ function Landing() {
       document.getElementById(i+"date").innerHTML=dt.toDateString();
       document.getElementById(i+"desc").innerHTML=wdata.daily[i].weather[0].description;
     }
+
+    if(document.getElementById("location").value==""){
+      document.getElementById("mainhd").innerHTML="Current Weather"+" (latitude= "+ document.getElementById("latitude").value+" longitude= "+ document.getElementById("longitude").value+")";
+    }else{
+      document.getElementById("mainhd").innerHTML="Current Weather"+" ("+document.getElementById("location").value+")";
+    }
+
     document.getElementById("latitude").value="";
     document.getElementById("longitude").value="";
     document.getElementById("location").value="";
@@ -136,11 +141,11 @@ function Landing() {
 
       <div class="container">
         <div class="row gy-5">
-          <div class="col-lg-10 col-md-9">
+          <div class="col-lg-12 col-md-12 col-12">
             <div class="container cardown">
               <div class="row ">
-                <div class="col headown" >
-                  Current Weather
+                <div class="col headown" id="mainhd">
+                  
                 </div>
               </div>
               <div class="row ">
@@ -190,77 +195,79 @@ function Landing() {
               </div>
             </div>
           </div>
-          
-          <div class="col-lg-2 col-md-3">
-                
-                  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <div class="card">
-                            <span class="forcastown">5 day forecast</span>
-                            <img class="card-img-top" id="1img" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
-                            <div class="card-body">
-                              <h5 class="card-title" id="1date"></h5>
-                              <p class="card-text" id="1desc"></p>
-                              <p class="card-text"><b id="1max"></b><br></br><b id="1min"></b></p>
-                            </div>
-                          </div>
-                        </div>
-                          <div class="carousel-item">
-                            <div class="card">
-                              <span class="forcastown">5 day forecast</span>
-                              <img class="card-img-top" id="2img" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
-                              <div class="card-body">
-                                <h5 class="card-title" id="2date"></h5>
-                                <p class="card-text" id="2desc"></p>
-                                <p class="card-text"><b id="2max"></b> <br></br> <b id="2min"></b></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="card">
-                              <span class="forcastown">5 day forecast</span>
-                              <img class="card-img-top" id="3img" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
-                              <div class="card-body">
-                                <h5 class="card-title" id="3date"></h5>
-                                <p class="card-text" id="3desc"></p>
-                                <p class="card-text"><b id="3max"></b><br></br><b id="3min"></b></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="card">
-                              <span class="forcastown">5 day forecast</span>
-                              <img class="card-img-top" id="4img" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
-                              <div class="card-body">
-                                <h5 class="card-title" id="4date"></h5>
-                                <p class="card-text" id="4desc"></p>
-                                <p class="card-text"><b id="4max"></b><br></br><b id="4min"></b></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="carousel-item">
-                            <div class="card">
-                              <span class="forcastown">5 day forecast</span>
-                              <img class="card-img-top" id="5img" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
-                              <div class="card-body">
-                                <h5 class="card-title" id="5date"></h5>
-                                <p class="card-text" id="5desc"></p>
-                                <p class="card-text"><b id="5max"></b><br></br><b id="5min"></b></p>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
+
+
         </div>
+        <br></br>
+        <span class="forcastown">6 day forecast</span>
+        <div class="row gy-5 rowown">
+            <div class="col-lg-2 col-md-4 col-xs-12">
+              <div class="card">
+                
+                <img class="card-img-top" id="1img" src="https://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
+                <div class="card-body">
+                <h5 class="card-title" id="1date"></h5>
+                <p class="card-text" id="1desc"></p>
+                <p class="card-text"><b id="1max"></b><br></br><b id="1min"></b></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-xs-12">
+              <div class="card">
+                <img class="card-img-top" id="2img" src="https://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
+                <div class="card-body">
+                <h5 class="card-title" id="2date"></h5>
+                <p class="card-text" id="2desc"></p>
+                <p class="card-text"><b id="2max"></b><br></br><b id="2min"></b></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-xs-12">
+              <div class="card">
+                <img class="card-img-top" id="3img" src="https://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
+                <div class="card-body">
+                <h5 class="card-title" id="3date"></h5>
+                <p class="card-text" id="3desc"></p>
+                <p class="card-text"><b id="3max"></b><br></br><b id="3min"></b></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-xs-12">
+              <div class="card">
+                <img class="card-img-top" id="4img" src="https://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
+                <div class="card-body">
+                <h5 class="card-title" id="4date"></h5>
+                <p class="card-text" id="4desc"></p>
+                <p class="card-text"><b id="4max"></b><br></br><b id="4min"></b></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-xs-12">
+              <div class="card">
+                <img class="card-img-top" id="5img" src="https://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
+                <div class="card-body">
+                <h5 class="card-title" id="5date"></h5>
+                <p class="card-text" id="5desc"></p>
+                <p class="card-text"><b id="5max"></b><br></br><b id="5min"></b></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-xs-12">
+              <div class="card">
+                <img class="card-img-top" id="6img" src="https://openweathermap.org/img/wn/10d@2x.png" alt="Card image cap"/>
+                <div class="card-body">
+                <h5 class="card-title" id="6date"></h5>
+                <p class="card-text" id="6desc"></p>
+                <p class="card-text"><b id="6max"></b><br></br><b id="6min"></b></p>
+                </div>
+              </div>
+            </div>
+
         </div>
       </div>
       <br></br>
