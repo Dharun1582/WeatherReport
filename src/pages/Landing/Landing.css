@@ -1,0 +1,85 @@
+
+.centre{
+    margin: auto;
+}
+
+.imgown{
+    padding: 0px 0px;
+   
+}
+
+.cardown{
+    background: rgba( 255, 255, 255, 0.2 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.tempown{
+    font-size: 40px;
+    font-weight: 900;
+    
+}
+
+.maindescription{
+    padding: 30px 0px;
+    text-align: left;
+}
+
+.headown{
+    text-align: left;
+    padding: 10px 3px;
+    font-weight: 900;
+    font-size: x-large;
+}
+.descown{
+    text-align: left;
+    font-weight: 700;
+    font-size: large;
+}
+
+#main{
+    padding: 80px 0px;
+    text-align: left;
+}
+
+#desc{
+    padding: 20px 3px;
+}
+
+#curimg{
+
+    margin: auto;
+}
+
+.btmcont{
+    padding: 10px 10px 30px;
+}
+
+.card{
+    background: rgba( 255, 255, 255, 0.2 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 3.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    height:max-content;
+}
+
+.forecast{
+    height: 100%;
+    padding: 10px 10px 0px 10px;
+}
+
+.card-text{
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.forcastown{
+    padding: 10px 3px;
+    font-weight: 900;
+    font-size: large;
+}

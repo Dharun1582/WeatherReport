@@ -1,0 +1,19 @@
+::selection {
+    background-color: #c3cfe2;
+}
+/* body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #fdfbfb, #ebedee 70%);
+} */
+.text {
+    text-transform: uppercase;
+    background: linear-gradient(to right, #dfff13 0%, #626708 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 5vw;
+    font-family: 'Poppins', sans-serif;
+}
