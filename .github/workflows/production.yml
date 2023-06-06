@@ -1,0 +1,34 @@
+
+name: "ci-cd pipeline"
+
+on: 
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+        cache: 'npm'
+        cache-dependency-path: package-lock.json
+    - name: Install dependencies
+      run: npm install 
+
+    - name: Build file
+      run: npm run build
+      
+
+    - name: Deploy production to Netlify
+      uses: South-Paw/action-netlify-deploy@v1.2.0
+      with:
+        github-token: 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
+        netlify-auth-token: x1bWJvHPxIY6DFwlgci1i2QJKr921j4eClxni3sLAjA
+        netlify-site-id: 62e7aabd-9b6e-49d1-8281-ef2d974968b9
+        build-dir: './build'
+        comment-on-commit: true
