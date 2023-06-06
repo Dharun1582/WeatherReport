@@ -1,34 +1,21 @@
-
-name: "ci-cd pipeline"
-
-on: 
-  push:
-    branches:
-    - main
-
+name: Build and Deploy
+on: [push]
+permissions:
+  contents: write
 jobs:
-  build:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16.x
-        cache: 'npm'
-        cache-dependency-path: package-lock.json
-    - name: Install dependencies
-      run: npm install 
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
 
-    - name: Build file
-      run: npm run build
-      
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm ci
+          npm run build
 
-    - name: Deploy production to Netlify
-      uses: South-Paw/action-netlify-deploy@v1.2.0
-      with:
-        github-token: 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
-        netlify-auth-token: ZzpJWSqzoRhQa4SVXlWug4PX8-UltFt_FLhlFlIXwFA
-        netlify-site-id: 62e7aabd-9b6e-49d1-8281-ef2d974968b9
-        build-dir: './build'
-        comment-on-commit: true
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build # The folder the action should deploy.
